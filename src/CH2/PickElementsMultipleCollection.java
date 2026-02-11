@@ -48,5 +48,4 @@ public class PickElementsMultipleCollection {
         System.out.println(countComradesStartN2);
         System.out.println(countEditorsStartN2);
     }
-
 }
