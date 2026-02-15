@@ -25,5 +25,4 @@ public class PickAnElement {
         pickName(friends, "N");
         pickName(friends, "B");
     }
-
 }
