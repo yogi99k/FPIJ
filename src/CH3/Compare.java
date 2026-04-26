@@ -14,8 +14,8 @@ public class Compare {
             new Person ( "Greg" , 35)
     );
 
-    List<Person> ascendingAge = people.stream()
-            .sorted((person1, person2)-> person1.ageDifference(person2))
-            .collect(toList());
+//    List<Person> ascendingAge = people.stream()
+//            .sorted((person1, person2)-> person1.ageDifference(person2))
+//            .collect(toList());
 
 }
