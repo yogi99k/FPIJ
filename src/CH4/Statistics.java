@@ -2,8 +2,10 @@ package CH4;
 
 import java.util.DoubleSummaryStatistics;
 import java.util.List;
+import java.util.Map;
 
 import static CH4.Person.SAMPLE_DATA;
+import static java.util.stream.Collectors.partitioningBy;
 import static java.util.stream.Collectors.summarizingDouble;
 
 public class Statistics {
@@ -34,6 +36,13 @@ public class Statistics {
         System.out.println( "Everyone has zero or more email address: " +
                 SAMPLE_DATA.stream()
                         .allMatch(person -> person.emailAddresses().size() >= 0));
+
+        //partitioningBy
+        Map<Boolean, List<Person>> collect1 = SAMPLE_DATA.stream()
+                .collect(partitioningBy(person -> person.emailAddresses().size() > 1));
+        System.out.println("Persons with emails >1 : "+collect1.get(true).size());
+        System.out.println("Persons with emails <1 : "+collect1.get(false).size());
+
     }
 
     public static List<String> fname(){
