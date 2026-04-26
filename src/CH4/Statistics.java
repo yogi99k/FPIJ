@@ -22,10 +22,18 @@ public class Statistics {
         System.out.println(Statistics.emails());
         System.out.println(Statistics.emailsFlat());
 
+        //anyMatch
         System.out.println("Anyone has email address: "+ SAMPLE_DATA.stream()
                 .anyMatch(person -> person.emailAddresses().size()>0));
         System.out.println("Anyone has 10 email address: "+ SAMPLE_DATA.stream()
                 .anyMatch(person -> person.emailAddresses().size()>=10));
+        //allMatch
+        System.out.println( "Everyone has at least one email address: " +
+                SAMPLE_DATA.stream()
+                        .allMatch(person -> person.emailAddresses().size() > 0));
+        System.out.println( "Everyone has zero or more email address: " +
+                SAMPLE_DATA.stream()
+                        .allMatch(person -> person.emailAddresses().size() >= 0));
     }
 
     public static List<String> fname(){
