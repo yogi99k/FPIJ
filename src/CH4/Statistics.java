@@ -21,6 +21,11 @@ public class Statistics {
         //System.out.println(new Statistics().fname()); //used if fname method is not static
         System.out.println(Statistics.emails());
         System.out.println(Statistics.emailsFlat());
+
+        System.out.println("Anyone has email address: "+ SAMPLE_DATA.stream()
+                .anyMatch(person -> person.emailAddresses().size()>0));
+        System.out.println("Anyone has 10 email address: "+ SAMPLE_DATA.stream()
+                .anyMatch(person -> person.emailAddresses().size()>=10));
     }
 
     public static List<String> fname(){
