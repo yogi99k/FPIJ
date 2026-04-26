@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import static CH4.Person.SAMPLE_DATA;
-import static java.util.stream.Collectors.partitioningBy;
-import static java.util.stream.Collectors.summarizingDouble;
+import static java.util.Comparator.comparing;
+import static java.util.stream.Collectors.*;
 
 public class Statistics {
     public static void main(String[] args) {
@@ -43,6 +43,17 @@ public class Statistics {
         System.out.println("Persons with emails >1 : "+collect1.get(true).size());
         System.out.println("Persons with emails <1 : "+collect1.get(false).size());
 
+        //teeing : “Run 2 collectors in parallel and combine result”
+        var leastAndMostEmailAddressPerson = SAMPLE_DATA.stream()
+                .collect(
+                        teeing(
+                                minBy(comparing(person -> person.emailAddresses().size())),
+                                maxBy(comparing(person -> person.emailAddresses().size())),
+                                (min, max) ->
+                                                "Min: " + min.map(Person::fullName).orElse("") +
+                                                        ", Max: " + max.map(Person::fullName).orElse("")
+                        ));
+        System.out.println(leastAndMostEmailAddressPerson);
     }
 
     public static List<String> fname(){
