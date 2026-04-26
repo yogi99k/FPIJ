@@ -19,11 +19,18 @@ public class Statistics {
                 "Number of email addresses: " + collect.getSum());
         System.out.println(Statistics.fname());
         //System.out.println(new Statistics().fname()); //used if fname method is not static
+        System.out.println(Statistics.emails());
     }
 
     public static List<String> fname(){
         List<String> list = SAMPLE_DATA.stream()
                 .map(Person::firstName)
+                .toList();
+        return list;
+    }
+    public static List<List<String>> emails(){
+        List<List<String>> list = SAMPLE_DATA.stream()
+                .map(Person::emailAddresses)
                 .toList();
         return list;
     }
