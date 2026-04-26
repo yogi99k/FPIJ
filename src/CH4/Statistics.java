@@ -20,6 +20,7 @@ public class Statistics {
         System.out.println(Statistics.fname());
         //System.out.println(new Statistics().fname()); //used if fname method is not static
         System.out.println(Statistics.emails());
+        System.out.println(Statistics.emailsFlat());
     }
 
     public static List<String> fname(){
@@ -33,5 +34,12 @@ public class Statistics {
                 .map(Person::emailAddresses)
                 .toList();
         return list;
+    }
+
+    public static List<String> emailsFlat(){
+        List<String> emailAddresses = SAMPLE_DATA.stream()
+                .flatMap(person -> person.emailAddresses().stream())
+                .toList();
+        return emailAddresses;
     }
 }
